@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8–14 August 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17241c;
+  --ink-2:#415044;
+  --ink-3:#6b7a6e;
+  --paper:#dde2d6;
+  --card:#eaede3;
+  --line:#c2cab8;
+  --ochre:#a8761f;
+  --rust:#8e3b26;
+  --shade:rgba(142,59,38,.10);
+  --focus:#17241c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Newsreader",Georgia,serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:52rem;margin:0 auto;padding:1.5rem 1.25rem 5rem}
+
+/* ---------- language switching ---------- */
+.l{display:none}
+html[data-lang="en"] .en{display:inline}
+html[data-lang="pt"] .pt{display:inline}
+
+.langbar{display:flex;gap:.4rem;justify-content:flex-end;margin-bottom:2.5rem}
+.langbtn{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  background:none;border:1px solid var(--line);color:var(--ink-3);
+  padding:.42rem .8rem;border-radius:2px;cursor:pointer;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.langbtn:hover{border-color:var(--ink-3);color:var(--ink)}
+.langbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.langbtn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+/* ---------- hero ---------- */
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 1rem;
+}
+h1{
+  font-family:"Bricolage Grotesque","Helvetica Neue",sans-serif;
+  font-weight:800;font-size:clamp(2.9rem,11vw,5.2rem);
+  line-height:.92;letter-spacing:-.035em;margin:0 0 1.1rem;
+}
+.standfirst{
+  font-size:1.12rem;color:var(--ink-2);max-width:34rem;margin:0 0 2.75rem;
+}
+.standfirst em{font-style:italic;color:var(--ink)}
+
+/* ---------- heat strip ---------- */
+.heat{margin-bottom:3.25rem}
+.heat-label{
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-bottom:.9rem;
+}
+.bars{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;align-items:end}
+.bar{
+  background:none;border:0;padding:0;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  font-family:"IBM Plex Mono",monospace;color:var(--ink-3);
+}
+.bar:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.bar-fill{
+  width:100%;border-radius:1px;
+  transition:transform .18s ease, filter .18s ease;
+  transform-origin:bottom;
+}
+.bar:hover .bar-fill{filter:brightness(1.14)}
+.bar[aria-current="true"] .bar-fill{transform:scaleY(1.06)}
+.bar-temp{font-size:.72rem;font-weight:500;color:var(--ink-2)}
+.bar-day{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.bar[aria-current="true"] .bar-day,.bar[aria-current="true"] .bar-temp{color:var(--ink)}
+
+/* ---------- days ---------- */
+.day{border-top:1px solid var(--line)}
+.day:last-of-type{border-bottom:1px solid var(--line)}
+.day-head{
+  width:100%;background:none;border:0;cursor:pointer;text-align:left;
+  display:flex;align-items:baseline;gap:1rem;padding:1.35rem .25rem;
+  color:var(--ink);font-family:inherit;
+}
+.day-head:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.day-date{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);flex:0 0 5.4rem;padding-top:.35rem;
+}
+.day-title{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+  font-size:clamp(1.25rem,4.2vw,1.7rem);line-height:1.15;letter-spacing:-.018em;
+  flex:1;
+}
+.day-tag{
+  display:block;font-family:"IBM Plex Mono",monospace;font-weight:400;
+  font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ochre);margin-top:.45rem;
+}
+.chev{flex:0 0 auto;color:var(--ink-3);transition:transform .22s ease;padding-top:.3rem}
+.day[data-open="true"] .chev{transform:rotate(90deg)}
+
+.panel{overflow:hidden;max-height:0;transition:max-height .32s ease}
+.day[data-open="true"] .panel{max-height:340rem}
+.panel-in{padding:.25rem .25rem 2.5rem;display:grid;gap:1.9rem}
+@media(min-width:46rem){.panel-in{padding-left:6.4rem}}
+
+.why{font-size:1.06rem;color:var(--ink-2);margin:0;max-width:36rem}
+.why strong{color:var(--ink);font-weight:500}
+
+/* ---------- the day arc (signature) ---------- */
+.arc{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:1.15rem 1.15rem 1rem}
+.arc-cap{
+  font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:1.15rem;
+  display:flex;justify-content:space-between;gap:1rem;
+}
+.track{position:relative;height:6px;background:var(--line);border-radius:3px;margin-bottom:.55rem}
+.hot{position:absolute;top:0;bottom:0;background:var(--shade);border-left:1px solid rgba(142,59,38,.3);border-right:1px solid rgba(142,59,38,.3)}
+.tick{position:absolute;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:var(--ink);border:2px solid var(--card)}
+.scale{
+  position:relative;height:1rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.6rem;color:var(--ink-3);
+}
+.scale span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.hotnote{
+  font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.06em;
+  color:var(--rust);margin-top:.7rem;
+}
+
+/* ---------- schedule + notes ---------- */
+h3{
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 .9rem;padding-bottom:.5rem;border-bottom:1px solid var(--line);
+}
+.sched{list-style:none;margin:0;padding:0;display:grid;gap:.85rem}
+.sched li{display:flex;gap:1rem;align-items:baseline}
+.sched .t{
+  font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--rust);
+  flex:0 0 3.6rem;font-weight:500;
+}
+.sched .d{flex:1}
+.sched .d b{font-weight:500}
+.sched .d i{font-style:italic;color:var(--ink-3);display:block;font-size:.94rem;margin-top:.1rem}
+
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+.notes li{
+  display:flex;gap:.75rem;font-size:.98rem;color:var(--ink-2);
+}
+.notes li::before{
+  content:"";flex:0 0 5px;height:5px;border-radius:50%;
+  background:var(--ochre);margin-top:.62rem;
+}
+.notes b{color:var(--ink);font-weight:500}
+
+.empty{
+  border:1px dashed var(--line);border-radius:3px;padding:1.5rem;
+  text-align:center;color:var(--ink-3);font-style:italic;
+}
+
+footer{
+  margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.08em;
+  color:var(--ink-3);line-height:2;
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  .panel{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="langbar" role="group" aria-label="Language / Idioma">
+    <button class="langbtn" data-set="en" aria-pressed="true">English</button>
+    <button class="langbtn" data-set="pt" aria-pressed="false">Português</button>
+  </div>
+
+  <p class="eyebrow">
+    <span class="l en">Bavarian Swabia · Donau-Ries · from Buttenwiesen</span>
+    <span class="l pt">Suábia Bávara · Donau-Ries · a partir de Buttenwiesen</span>
+  </p>
+
+  <h1>8&thinsp;&ndash;&thinsp;14 <span class="l en">August</span><span class="l pt">Agosto</span></h1>
+
+  <p class="standfirst">
+    <span class="l en">Seven days built around two fixed points: a city that shuts down to eat together, and a village that turns medieval for four nights. Everything else bends around the heat — <em>this is a 29 to 34&thinsp;°C week</em>, so the good hours are early and late.</span>
+    <span class="l pt">Sete dias construídos à volta de dois pontos fixos: uma cidade que pára para comer em conjunto, e uma aldeia que se torna medieval durante quatro noites. Tudo o resto se molda ao calor — <em>é uma semana de 29 a 34&thinsp;°C</em>, portanto as boas horas são cedo e ao fim do dia.</span>
+  </p>
+
+  <section class="heat" aria-label="Week at a glance">
+    <div class="heat-label">
+      <span><span class="l en">The week, by temperature</span><span class="l pt">A semana, por temperatura</span></span>
+      <span><span class="l en">tap a bar to open the day</span><span class="l pt">toque numa barra para abrir o dia</span></span>
+    </div>
+    <div class="bars" id="bars"></div>
+  </section>
+
+  <main id="days"></main>
+
+  <footer>
+    <span class="l en">Hours and programmes verified 7 August 2026. Festival programme from the Gemeinde Huisheim flyer. Check before travelling — small-town opening times move.</span>
+    <span class="l pt">Horários e programas verificados a 7 de agosto de 2026. Programa da festa retirado do folheto da Gemeinde Huisheim. Confirme antes de viajar — os horários em localidades pequenas mudam.</span>
+  </footer>
+</div>
+
+<script>
+const DAYS = [
+  {
+    id:"sat", temp:29,
+    dayEn:"Sat 8", dayPt:"Sáb 8",
+    abbrEn:"Sat", abbrPt:"Sáb",
+    titleEn:"Augsburg, on the one day it belongs to nobody",
+    titlePt:"Augsburgo, no único dia que não pertence a ninguém",
+    tagEn:"City holiday · Hohes Friedensfest",
+    tagPt:"Feriado municipal · Hohes Friedensfest",
+    whyEn:"Augsburg has a public holiday no other city in Germany has, and today is it. Since <strong>1650</strong> the city has marked the end of religious persecution here with a peace festival — and in 1950 it became law. The shops close. That sounds like a loss until you walk into an old town where nobody is shopping: the canals, the Fuggerei and the Renaissance squares are just there, full of people doing nothing in particular.",
+    whyPt:"Augsburgo tem um feriado que nenhuma outra cidade alemã tem, e é hoje. Desde <strong>1650</strong> que a cidade assinala aqui o fim da perseguição religiosa com uma festa da paz — e em 1950 tornou-se lei. As lojas fecham. Parece uma perda até entrarmos num centro histórico onde ninguém anda às compras: os canais, a Fuggerei e as praças renascentistas ficam simplesmente ali, cheias de gente sem nada de especial para fazer.",
+    events:[
+      {h:10, tEn:"10:00", dEn:"Ecumenical service, St. Ulrich und Afra", subEn:"Optional — but the building is worth the detour anyway.", dPt:"Missa ecuménica, St. Ulrich und Afra", subPt:"Opcional — mas o edifício justifica o desvio de qualquer forma."},
+      {h:11.25, tEn:"11:15", dEn:"Friedenstafel, Rathausplatz", subEn:"The centrepiece. A long shared table down the main square — you bring food and drink and swap with whoever sits next to you.", dPt:"Friedenstafel, Rathausplatz", subPt:"O ponto alto. Uma longa mesa partilhada na praça principal — leva-se comida e bebida e troca-se com quem estiver ao lado."},
+      {h:13, tEn:"13:00", dEn:"City walks from Annahof and Moritzkirche", subEn:"Two departures, 13:00 and 13:30.", dPt:"Percursos pela cidade a partir do Annahof e da Moritzkirche", subPt:"Duas partidas, 13:00 e 13:30."},
+      {h:15.5, tEn:"15:30", dEn:"Fuggerei", subEn:"World's oldest social housing, founded 1521. Rent is still 0.88 € a year. Open until 20:00.", dPt:"Fuggerei", subPt:"O mais antigo bairro social do mundo, fundado em 1521. A renda continua a ser 0,88 € por ano. Aberto até às 20:00."},
+      {h:19, tEn:"19:00", dEn:"A cappella concert, St. Anna", subEn:"Madrigalchor. A cool stone church at the end of a hot day.", dPt:"Concerto a cappella, St. Anna", subPt:"Madrigalchor. Uma igreja de pedra fresca no fim de um dia quente."}
+    ],
+    notesEn:[
+      "<b>Shops are closed all day.</b> Restaurants, cafés and museums are open — retail is not.",
+      "The Fuggerei opens at 8:00 on holidays instead of 9:00, if you want it empty.",
+      "Park outside the ring road and walk in. The centre will be busy."
+    ],
+    notesPt:[
+      "<b>As lojas estão encerradas todo o dia.</b> Restaurantes, cafés e museus estão abertos — o comércio não.",
+      "Em dias feriados a Fuggerei abre às 8:00 em vez das 9:00, caso a queiram ver vazia.",
+      "Estacionem fora da circular e entrem a pé. O centro vai estar cheio."
+    ]
+  },
+  {
+    id:"sun", temp:33,
+    dayEn:"Sun 9", dayPt:"Dom 9",
+    abbrEn:"Sun", abbrPt:"Dom",
+    titleEn:"Do nothing, deliberately",
+    titlePt:"Não fazer nada, de propósito",
+    tagEn:"Home · Biergarten",
+    tagPt:"Em casa · Biergarten",
+    whyEn:"The temperature jumps four degrees overnight and stays up for the rest of the week. This is the day to spend it — stay near home, keep the shutters closed until the sun comes off the front of the house, and go out only when the chestnut trees start throwing long shadows. A Biergarten in Bavaria is legally allowed to let you bring your own food; you buy the drinks. That is the whole institution.",
+    whyPt:"A temperatura sobe quatro graus de um dia para o outro e fica alta o resto da semana. Este é o dia para a gastar — ficar perto de casa, manter as portadas fechadas até o sol sair da frente da casa, e sair só quando os castanheiros começarem a fazer sombras compridas. Na Baviera, um Biergarten pode legalmente deixar-vos levar a vossa própria comida; as bebidas compram-se lá. É essa a instituição inteira.",
+    events:[
+      {h:18, tEn:"18:00", dEn:"Biergarten, whichever one has shade", subEn:"Bring your own bread, cheese and radishes. Buy the beer.", dPt:"Biergarten, aquele que tiver sombra", subPt:"Levem pão, queijo e rabanetes. A cerveja compra-se lá."}
+    ],
+    notesEn:[
+      "<b>Dehner is closed on Sundays</b> — resist the temptation to go a day early.",
+      "33 °C. Anything outdoors before 18:00 is a mistake you will feel on Monday."
+    ],
+    notesPt:[
+      "<b>O Dehner está encerrado ao domingo</b> — resistam à tentação de ir um dia mais cedo.",
+      "33 °C. Qualquer coisa ao ar livre antes das 18:00 é um erro que se sente na segunda-feira."
+    ]
+  },
+  {
+    id:"mon", temp:33,
+    dayEn:"Mon 10", dayPt:"Seg 10",
+    abbrEn:"Mon", abbrPt:"Seg",
+    titleEn:"Dehner Blumenpark, before the heat lands",
+    titlePt:"Dehner Blumenpark, antes de o calor assentar",
+    tagEn:"Rain am Lech · free entry",
+    tagPt:"Rain am Lech · entrada gratuita",
+    whyEn:"Dehner started in Rain am Lech and never left, so the headquarters comes with a <strong>115,000 m²</strong> show garden attached to the shop. Japanese landscape garden with large bonsai, water staircases, an arched bridge, Mediterranean and English sections — and a flock of flamingos that are the actual reason most people come. Entry and parking are free, which makes it a low-stakes morning: leave when you have had enough.",
+    whyPt:"A Dehner nasceu em Rain am Lech e nunca saiu de lá, por isso a sede tem um jardim-modelo de <strong>115.000 m²</strong> colado à loja. Jardim paisagístico japonês com grandes bonsais, escadarias de água, uma ponte em arco, zonas mediterrânica e inglesa — e um bando de flamingos que é a verdadeira razão pela qual a maioria das pessoas lá vai. A entrada e o estacionamento são gratuitos, o que faz disto uma manhã sem compromissos: saem quando estiverem fartos.",
+    events:[
+      {h:9, tEn:"09:00", dEn:"Arrive at opening", subEn:"Weekdays 9:00–18:00. The first two hours are the only comfortable ones today.", dPt:"Chegar à hora de abrir", subPt:"Dias úteis 9:00–18:00. As primeiras duas horas são as únicas confortáveis hoje."},
+      {h:11, tEn:"11:00", dEn:"Gartenbistro", subEn:"Opens 11:00, Mon–Sat. Tables look onto the garden.", dPt:"Gartenbistro", subPt:"Abre às 11:00, de segunda a sábado. As mesas dão para o jardim."},
+      {h:12.5, tEn:"12:30", dEn:"Rain am Lech old town, briefly", subEn:"Small town on the Romantic Road. Twenty minutes of it is enough in this weather.", dPt:"Centro histórico de Rain am Lech, por pouco tempo", subPt:"Vila pequena na Estrada Romântica. Vinte minutos chegam com este tempo."}
+    ],
+    notesEn:[
+      "Free entry, free parking, no ticket needed.",
+      "It is a garden centre as well as a garden — you will come home with a plant. Budget for it."
+    ],
+    notesPt:[
+      "Entrada gratuita, estacionamento gratuito, sem bilhete.",
+      "É um centro de jardinagem além de jardim — vão voltar para casa com uma planta. Contem com isso."
+    ]
+  },
+  {
+    id:"tue", temp:31,
+    dayEn:"Tue 11", dayPt:"Ter 11",
+    abbrEn:"Tue", abbrPt:"Ter",
+    titleEn:"Nothing scheduled",
+    titlePt:"Nada marcado",
+    tagEn:"Buffer day",
+    tagPt:"Dia de folga",
+    whyEn:"Deliberately empty, and worth keeping that way. It sits between the flower park and the castle, which means it absorbs whatever goes wrong on either side — a late start, a change in the weather, or simply not wanting to get in the car again. If the week has gone well and you want to fill it, Donauwörth is twenty minutes away and has the Käthe Kruse doll museum and a promenade along the Danube.",
+    whyPt:"Deliberadamente vazio, e vale a pena mantê-lo assim. Fica entre o parque de flores e o castelo, o que significa que absorve o que correr mal de qualquer um dos lados — um começo tardio, uma mudança de tempo, ou simplesmente não querer voltar a entrar no carro. Se a semana correr bem e quiserem preenchê-lo, Donauwörth fica a vinte minutos e tem o museu de bonecas Käthe Kruse e um passeio ao longo do Danúbio.",
+    events:[],
+    notesEn:[
+      "Hold this one empty for as long as you can. The two busiest days come next."
+    ],
+    notesPt:[
+      "Mantenham este dia livre o máximo de tempo possível. Os dois dias mais intensos vêm a seguir."
+    ]
+  },
+  {
+    id:"wed", temp:30,
+    dayEn:"Wed 12", dayPt:"Qua 12",
+    abbrEn:"Wed", abbrPt:"Qua",
+    titleEn:"Harburg Castle, nine hundred years of it",
+    titlePt:"Castelo de Harburg, novecentos anos dele",
+    tagEn:"Daily 10:00–17:00 · tours on the hour",
+    tagPt:"Diariamente 10:00–17:00 · visitas à hora certa",
+    whyEn:"One of the largest and best-preserved castle complexes in southern Germany, sitting on a rock above the Wörnitz with the main road tunnelling underneath it. The Staufers held it, then the Habsburgs, then the counts of Oettingen, who spent the 15th and 16th centuries turning it into a fortress. <strong>The guided tour is the part worth having</strong> — the courtyard alone is pleasant, but the tour gets you onto the covered rampart walk, into the Diebsturm with its dungeon, through the old courtroom and the princes' hall.",
+    whyPt:"Um dos maiores e mais bem preservados conjuntos de castelo do sul da Alemanha, assente numa rocha acima do rio Wörnitz, com a estrada principal a passar por baixo. Foi dos Staufer, depois dos Habsburgos, depois dos condes de Oettingen, que passaram os séculos XV e XVI a transformá-lo numa fortaleza. <strong>A visita guiada é a parte que interessa</strong> — o pátio por si só é agradável, mas a visita dá acesso ao caminho de ronda coberto, à Diebsturm com o seu calabouço, à antiga sala do tribunal e ao salão dos príncipes.",
+    events:[
+      {h:10, tEn:"10:00", dEn:"Gates open", subEn:"Season runs 14 March to 8 November, daily.", dPt:"Abertura dos portões", subPt:"A época vai de 14 de março a 8 de novembro, diariamente."},
+      {h:11, tEn:"11:00", dEn:"Guided tour", subEn:"Tours start on the hour. Take the late morning one — the rampart walk is exposed.", dPt:"Visita guiada", subPt:"As visitas começam à hora certa. Escolham a do fim da manhã — o caminho de ronda é exposto."},
+      {h:13, tEn:"13:00", dEn:"Lunch at the Burgschenke", subEn:"Inside the walls, vaulted and cool.", dPt:"Almoço na Burgschenke", subPt:"Dentro das muralhas, abobadada e fresca."},
+      {h:15, tEn:"15:00", dEn:"Down into Harburg town", subEn:"The stone bridge over the Wörnitz and the view back up at the castle.", dPt:"Descer até à vila de Harburg", subPt:"A ponte de pedra sobre o Wörnitz e a vista de baixo para o castelo."}
+    ],
+    notesEn:[
+      "Cobbles and steep ramps throughout. Proper shoes.",
+      "Harburg is fifteen minutes from Huisheim — useful to know for tomorrow."
+    ],
+    notesPt:[
+      "Calçada e rampas íngremes por todo o lado. Calçado adequado.",
+      "Harburg fica a quinze minutos de Huisheim — bom saber para amanhã."
+    ]
+  },
+  {
+    id:"thu", temp:32,
+    dayEn:"Thu 13", dayPt:"Qui 13",
+    abbrEn:"Thu", abbrPt:"Qui",
+    titleEn:"A crater in the morning, the Middle Ages at night",
+    titlePt:"Uma cratera de manhã, a Idade Média à noite",
+    tagEn:"The big one · festival entry free today",
+    tagPt:"O grande dia · entrada na festa gratuita hoje",
+    whyEn:"Nördlingen sits inside a <strong>meteorite crater</strong> fifteen million years old, and the town is built from the rock the impact made — there are microscopic diamonds in the church walls. It also has the only completely walkable town wall left in Germany, 2,632 metres of it, and no gap. Then in the evening you drive twenty-five minutes to Huisheim, where the whole village has closed its main road for four days and rebuilt itself as a medieval market. <strong>Thursday is the opening night and entry is free</strong> — the other three days are ticketed.",
+    whyPt:"Nördlingen fica dentro de uma <strong>cratera de meteorito</strong> com quinze milhões de anos, e a vila é construída com a rocha criada pelo impacto — há diamantes microscópicos nas paredes da igreja. Tem também a única muralha completamente percorrível que resta na Alemanha, 2.632 metros dela, sem interrupções. Depois, à noite, conduzem vinte e cinco minutos até Huisheim, onde a aldeia inteira fechou a rua principal durante quatro dias e se reconstruiu como um mercado medieval. <strong>Quinta-feira é a noite de abertura e a entrada é gratuita</strong> — os outros três dias são pagos.",
+    events:[
+      {h:10, tEn:"10:00", dEn:"Nördlingen — the wall", subEn:"Start at the Löpsinger Torturm. Walk the shaded northern stretch first.", dPt:"Nördlingen — a muralha", subPt:"Comecem na Löpsinger Torturm. Façam primeiro o troço norte, com sombra."},
+      {h:11.5, tEn:"11:30", dEn:"Climb the Daniel", subEn:"350 steps, 90 metres, whole crater from the top. Open daily 10:00–18:00. Do this before it gets hot, not after lunch.", dPt:"Subir a Daniel", subPt:"350 degraus, 90 metros, a cratera inteira lá de cima. Aberta diariamente das 10:00 às 18:00. Façam isto antes do calor, não depois de almoço."},
+      {h:13, tEn:"13:00", dEn:"Lunch on the Marktplatz, then the RiesKraterMuseum", subEn:"The museum is air-conditioned and explains what you just climbed above.", dPt:"Almoço na Marktplatz, depois o RiesKraterMuseum", subPt:"O museu tem ar condicionado e explica aquilo que acabaram de ver do alto."},
+      {h:15.5, tEn:"15:30", dEn:"Drive to Huisheim", subEn:"About 25 minutes. The through-road is closed — follow signs to the off-site parking.", dPt:"Viagem até Huisheim", subPt:"Cerca de 25 minutos. A rua principal está cortada — sigam as indicações para o estacionamento exterior."},
+      {h:16, tEn:"16:00", dEn:"Opening ceremony", subEn:"Free entry today. Market stalls, jugglers, birds of prey, alpacas, a historical bowling alley.", dPt:"Cerimónia de abertura", subPt:"Entrada gratuita hoje. Bancas de mercado, saltimbancos, aves de rapina, alpacas, uma pista de bowling histórica."},
+      {h:17, tEn:"17:00", dEn:"Musket and cannon demonstration", subEn:"Loud. Stand upwind.", dPt:"Demonstração de mosquetes e canhões", subPt:"Barulhento. Fiquem do lado de onde sopra o vento."},
+      {h:18.75, tEn:"18:45", dEn:"Birthday dinner at the festival", subEn:"Flame-grilled salmon, grill specialities, vegetarian and sweet things — plus a beer tap, a historical wine stadl and a schnapps bar.", dPt:"Jantar de aniversário na festa", subPt:"Salmão grelhado na chama, especialidades de grelhados, pratos vegetarianos e doces — mais uma torneira de cerveja, um wine stadl histórico e um bar de aguardentes."},
+      {h:20, tEn:"20:00", dEn:"Band \u201cDecolores\u201d, then \u201cBarfu\u00df\u201d", subEn:"Two stages running all evening.", dPt:"Banda \u201cDecolores\u201d, depois \u201cBarfu\u00df\u201d", subPt:"Dois palcos a funcionar toda a noite."},
+      {h:22, tEn:"22:00", dEn:"Fire show", subEn:"Then the night watchman's round at 22:30 to finish.", dPt:"Espetáculo de fogo", subPt:"Depois, a ronda do guarda-noturno às 22:30 para terminar."}
+    ],
+    notesEn:[
+      "<b>Free entry today only.</b> Friday to Sunday costs 8 € for adults, 5 € under 16.",
+      "<b>One of you is not drinking.</b> Huisheim back to Buttenwiesen is about 45 minutes of unlit country road, and the limit is 0.5 ‰.",
+      "The Daniel is 350 steps in 32 °C heat. Water bottles, and go up before noon."
+    ],
+    notesPt:[
+      "<b>Entrada gratuita só hoje.</b> De sexta a domingo custa 8 € para adultos, 5 € abaixo dos 16.",
+      "<b>Um de vocês não bebe.</b> De Huisheim a Buttenwiesen são cerca de 45 minutos de estrada rural sem iluminação, e o limite é 0,5 ‰.",
+      "A Daniel são 350 degraus a 32 °C. Garrafas de água, e subam antes do meio-dia."
+    ]
+  },
+  {
+    id:"fri", temp:34,
+    dayEn:"Fri 14", dayPt:"Sex 14",
+    abbrEn:"Fri", abbrPt:"Sex",
+    titleEn:"Dinner at the Bäldleschwaige",
+    titlePt:"Jantar na Bäldleschwaige",
+    tagEn:"Tapfheim · from 17:00 · cash only",
+    tagPt:"Tapfheim · a partir das 17:00 · só dinheiro",
+    whyEn:"34 °C, the peak of the week — so the answer is a short drive and a long evening. The Hofgut is a working farm turned Biergarten about <strong>ten minutes from the house</strong>, with donkeys, a petting zoo and a very large beer garden. The evening menu only runs Friday and Saturday: pork knuckle, spareribs, Hofgockel, liver, Nierle. Today is also the opening of their <strong>MB-Trac, Unimog and vintage tractor meet</strong>, which runs to Sunday — so expect machinery on the field and the people who love it.",
+    whyPt:"34 °C, o pico da semana — por isso a resposta é uma viagem curta e uma noite longa. O Hofgut é uma quinta em atividade transformada em Biergarten, a cerca de <strong>dez minutos de casa</strong>, com burros, uma quinta pedagógica e um enorme jardim-cervejaria. O menu de jantar só existe à sexta e ao sábado: joelho de porco, entrecosto, Hofgockel, fígado, Nierle. Hoje é também a abertura do <strong>encontro de MB-Trac, Unimog e tratores clássicos</strong>, que vai até domingo — contem com maquinaria no campo e com quem gosta dela.",
+    events:[
+      {h:10, tEn:"10:00", dEn:"Groceries, before everything shuts", subEn:"Tomorrow is Mariä Himmelfahrt — see the note below.", dPt:"Compras, antes de tudo fechar", subPt:"Amanhã é a Assunção de Nossa Senhora — ver a nota abaixo."},
+      {h:17.5, tEn:"17:30", dEn:"Arrive at the Hofgut", subEn:"Evening menu starts at 17:00. Still light enough to walk the farm and see the tractors before eating.", dPt:"Chegar ao Hofgut", subPt:"O menu de jantar começa às 17:00. Ainda há luz para percorrer a quinta e ver os tratores antes de comer."},
+      {h:18.25, tEn:"18:15", dEn:"Dinner", subEn:"Haxn, spareribs, Hofgockel, liver, Nierle. Portions are farm-sized.", dPt:"Jantar", subPt:"Haxn, entrecosto, Hofgockel, fígado, Nierle. As doses são de quinta."},
+      {h:20, tEn:"20:00", dEn:"Stay out in the garden", subEn:"The heat finally breaks after sundown. This is the payoff for the whole week.", dPt:"Ficar no jardim", subPt:"O calor só cede depois do pôr do sol. É esta a recompensa da semana inteira."},
+      {h:21, tEn:"21:00", dEn:"They close", subEn:"Early by festival standards. Ten minutes home.", dPt:"Fecham", subPt:"Cedo, para os padrões de uma festa. Dez minutos até casa."}
+    ],
+    notesEn:[
+      "<b>Cash only.</b> No card payment of any kind, and no cashpoint on site. Bring more than you think.",
+      "<b>You cannot bring your own food or drink here</b> — the house rule is explicit. Different from Sunday's Biergarten.",
+      "<b>Saturday 15 August is Mariä Himmelfahrt</b>, a public holiday across most of Catholic Bavaria. Shops shut. Do the food shop this morning.",
+      "Still an option instead: Huisheim from 14:00 for 8 € each, which is the fullest of the four festival days and runs to a fire show at 23:00. It is 45 minutes of unlit road each way, against ten minutes to Tapfheim."
+    ],
+    notesPt:[
+      "<b>Só dinheiro.</b> Não aceitam qualquer tipo de cartão e não há multibanco no local. Levem mais do que pensam.",
+      "<b>Não é permitido levar comida ou bebida de fora</b> — a regra da casa é explícita. Ao contrário do Biergarten de domingo.",
+      "<b>Sábado, 15 de agosto, é a Assunção de Nossa Senhora</b>, feriado na maior parte da Baviera católica. As lojas fecham. Façam as compras esta manhã.",
+      "Continua a ser alternativa: Huisheim a partir das 14:00, por 8 € cada, que é o mais completo dos quatro dias da festa e termina com um espetáculo de fogo às 23:00. São 45 minutos de estrada sem iluminação em cada sentido, contra dez minutos até Tapfheim."
+    ]
+  }
+];
+
+const START = 8, END = 24, SPAN = END - START;
+const pos = h => ((h - START) / SPAN) * 100;
+const heatColor = t => {
+  const k = Math.min(1, Math.max(0, (t - 28) / 7));
+  const r = Math.round(168 + (142 - 168) * k);
+  const g = Math.round(118 + (59 - 118) * k);
+  const b = Math.round(31 + (38 - 31) * k);
+  return `rgb(${r},${g},${b})`;
+};
+const bi = (en, pt) => `<span class="l en">${en}</span><span class="l pt">${pt}</span>`;
+
+/* ---- heat strip ---- */
+document.getElementById("bars").innerHTML = DAYS.map(d => `
+  <button class="bar" data-go="${d.id}" aria-current="false">
+    <span class="bar-temp">${d.temp}°</span>
+    <span class="bar-fill" style="height:${28 + (d.temp - 28) * 11}px;background:${heatColor(d.temp)}"></span>
+    <span class="bar-day">${bi(d.abbrEn, d.abbrPt)}</span>
+  </button>`).join("");
+
+/* ---- days ---- */
+document.getElementById("days").innerHTML = DAYS.map(d => {
+  const arc = d.events.length ? `
+    <div class="arc">
+      <div class="arc-cap">
+        <span>${bi("Shape of the day", "Forma do dia")}</span>
+        <span>${d.temp}&thinsp;°C</span>
+      </div>
+      <div class="track">
+        <div class="hot" style="left:${pos(13)}%;width:${pos(18) - pos(13)}%"></div>
+        ${d.events.map(e => `<div class="tick" style="left:${pos(e.h)}%"></div>`).join("")}
+      </div>
+      <div class="scale">
+        <span style="left:0%">08</span>
+        <span style="left:${pos(12)}%">12</span>
+        <span style="left:${pos(16)}%">16</span>
+        <span style="left:${pos(20)}%">20</span>
+        <span style="left:100%">24</span>
+      </div>
+      <p class="hotnote">${bi("Shaded 13:00–18:00 — the hours to spend indoors, in shade, or asleep.", "Zona sombreada 13:00–18:00 — as horas para passar dentro de casa, à sombra, ou a dormir.")}</p>
+    </div>` : "";
+
+  const sched = d.events.length ? `
+    <section>
+      <h3>${bi("The day", "O dia")}</h3>
+      <ul class="sched">
+        ${d.events.map(e => `
+          <li>
+            <span class="t">${e.tEn}</span>
+            <span class="d">
+              <b>${bi(e.dEn, e.dPt)}</b>
+              <i>${bi(e.subEn, e.subPt)}</i>
+            </span>
+          </li>`).join("")}
+      </ul>
+    </section>` : `
+    <div class="empty">${bi("Nothing here on purpose. Fill it or don't.", "Nada aqui de propósito. Preencham ou não.")}</div>`;
+
+  return `
+  <article class="day" id="${d.id}" data-open="false">
+    <button class="day-head" aria-expanded="false" aria-controls="p-${d.id}">
+      <span class="day-date">${bi(d.dayEn, d.dayPt)}</span>
+      <span class="day-title">
+        ${bi(d.titleEn, d.titlePt)}
+        <span class="day-tag">${bi(d.tagEn, d.tagPt)}</span>
+      </span>
+      <span class="chev" aria-hidden="true">&#9656;</span>
+    </button>
+    <div class="panel" id="p-${d.id}" role="region">
+      <div class="panel-in">
+        <p class="why">${bi(d.whyEn, d.whyPt)}</p>
+        ${arc}
+        ${sched}
+        <section>
+          <h3>${bi("Worth knowing", "Vale a pena saber")}</h3>
+          <ul class="notes">
+            ${d.notesEn.map((n, i) => `<li><span>${bi(n, d.notesPt[i])}</span></li>`).join("")}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article>`;
+}).join("");
+
+/* ---- behaviour ---- */
+function openDay(id, scroll) {
+  document.querySelectorAll(".day").forEach(day => {
+    const on = day.id === id;
+    day.dataset.open = on;
+    day.querySelector(".day-head").setAttribute("aria-expanded", on);
+  });
+  document.querySelectorAll(".bar").forEach(b =>
+    b.setAttribute("aria-current", b.dataset.go === id));
+  if (scroll) document.getElementById(id).scrollIntoView({
+    behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    block: "start"
+  });
+}
+
+document.querySelectorAll(".day-head").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const day = btn.closest(".day");
+    openDay(day.dataset.open === "true" ? null : day.id, false);
+  });
+});
+document.querySelectorAll(".bar").forEach(b =>
+  b.addEventListener("click", () => openDay(b.dataset.go, true)));
+
+document.querySelectorAll(".langbtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.set;
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang === "pt" ? "pt-PT" : "en";
+    document.querySelectorAll(".langbtn").forEach(b =>
+      b.setAttribute("aria-pressed", b.dataset.set === lang));
+  });
+});
+
+openDay("sat", false);
+</script>
+</body>
+</html>
