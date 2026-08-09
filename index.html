@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>8–14 August 2026</title>
+<title>8–15 August 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@ h1{
   display:flex;justify-content:space-between;align-items:baseline;
   border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-bottom:.9rem;
 }
-.bars{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;align-items:end}
+.bars{display:grid;grid-template-columns:repeat(8,1fr);gap:.25rem;align-items:end}
 .bar{
   background:none;border:0;padding:0;cursor:pointer;
   display:flex;flex-direction:column;align-items:center;gap:.4rem;
@@ -88,8 +88,8 @@ h1{
 }
 .bar:hover .bar-fill{filter:brightness(1.14)}
 .bar[aria-current="true"] .bar-fill{transform:scaleY(1.06)}
-.bar-temp{font-size:.72rem;font-weight:500;color:var(--ink-2)}
-.bar-day{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase}
+.bar-temp{font-size:.72rem;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.bar-day{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .bar[aria-current="true"] .bar-day,.bar[aria-current="true"] .bar-temp{color:var(--ink)}
 
 /* ---------- days ---------- */
@@ -201,7 +201,7 @@ footer{
     <span class="l pt">Suábia Bávara · Donau-Ries · a partir de Buttenwiesen</span>
   </p>
 
-  <h1>8&thinsp;&ndash;&thinsp;14 <span class="l en">August</span><span class="l pt">Agosto</span></h1>
+  <h1>8&thinsp;&ndash;&thinsp;15 <span class="l en">August</span><span class="l pt">Agosto</span></h1>
 
   <p class="standfirst">
     <span class="l en">Seven days built around two fixed points: a city that shuts down to eat together, and a village that turns medieval for four nights. Everything else bends around the heat — <em>this is a 29 to 34&thinsp;°C week</em>, so the good hours are early and late.</span>
@@ -219,8 +219,8 @@ footer{
   <main id="days"></main>
 
   <footer>
-    <span class="l en">Hours and programmes verified 7 August 2026. Festival programme from the Gemeinde Huisheim flyer. Check before travelling — small-town opening times move.</span>
-    <span class="l pt">Horários e programas verificados a 7 de agosto de 2026. Programa da festa retirado do folheto da Gemeinde Huisheim. Confirme antes de viajar — os horários em localidades pequenas mudam.</span>
+    <span class="l en">Hours and programmes verified 7–9 August 2026. Festival programme from the Gemeinde Huisheim flyer. Check before travelling — small-town opening times move.</span>
+    <span class="l pt">Horários e programas verificados entre 7 e 9 de agosto de 2026. Programa da festa retirado do folheto da Gemeinde Huisheim. Confirme antes de viajar — os horários em localidades pequenas mudam.</span>
   </footer>
 </div>
 
@@ -388,30 +388,61 @@ const DAYS = [
     id:"fri", temp:34,
     dayEn:"Fri 14", dayPt:"Sex 14",
     abbrEn:"Fri", abbrPt:"Sex",
-    titleEn:"Dinner at the Bäldleschwaige",
-    titlePt:"Jantar na Bäldleschwaige",
-    tagEn:"Tapfheim · from 17:00 · cash only",
-    tagPt:"Tapfheim · a partir das 17:00 · só dinheiro",
-    whyEn:"34 °C, the peak of the week — so the answer is a short drive and a long evening. The Hofgut is a working farm turned Biergarten about <strong>ten minutes from the house</strong>, with donkeys, a petting zoo and a very large beer garden. The evening menu only runs Friday and Saturday: pork knuckle, spareribs, Hofgockel, liver, Nierle. Today is also the opening of their <strong>MB-Trac, Unimog and vintage tractor meet</strong>, which runs to Sunday — so expect machinery on the field and the people who love it.",
-    whyPt:"34 °C, o pico da semana — por isso a resposta é uma viagem curta e uma noite longa. O Hofgut é uma quinta em atividade transformada em Biergarten, a cerca de <strong>dez minutos de casa</strong>, com burros, uma quinta pedagógica e um enorme jardim-cervejaria. O menu de jantar só existe à sexta e ao sábado: joelho de porco, entrecosto, Hofgockel, fígado, Nierle. Hoje é também a abertura do <strong>encontro de MB-Trac, Unimog e tratores clássicos</strong>, que vai até domingo — contem com maquinaria no campo e com quem gosta dela.",
+    titleEn:"Regensburg by day, the Bäldleschwaige by night",
+    titlePt:"Regensburgo de dia, a Bäldleschwaige à noite",
+    tagEn:"Old town morning · farm dinner from 17:00",
+    tagPt:"Manhã no centro histórico · jantar na quinta a partir das 17:00",
+    whyEn:"Two stops today, deliberately unclocked. Regensburg's old town survived the war almost untouched — <strong>the Steinerne Brücke, the Dom St. Peter and the Porta Praetoria</strong> are all within a short walk of each other, and the appeal is wandering rather than ticking off sights. Doing it today rather than tomorrow was the whole point of the swap: no flight waiting at the end of it, just a farm dinner with a kitchen that opens at 17:00 and doesn't much mind when you arrive. The Hofgut's evening menu only runs Friday and Saturday — Haxn, spareribs, Hofgockel, liver, Nierle — and today is also the opening of their <strong>MB-Trac, Unimog and vintage tractor meet</strong>, running to Sunday.",
+    whyPt:"Duas paragens hoje, deliberadamente sem horário fixo. O centro histórico de Regensburgo sobreviveu à guerra praticamente intacto — <strong>a Steinerne Brücke, o Dom St. Peter e a Porta Praetoria</strong> ficam todos a uma curta distância a pé uns dos outros, e o interesse está em passear, não em cumprir uma lista. Fazer isto hoje em vez de amanhã foi todo o sentido da troca: não há voo nenhum à espera no final, só um jantar na quinta com uma cozinha que abre às 17:00 e não se importa muito com a hora a que chegam. O menu de jantar do Hofgut só existe à sexta e ao sábado — Haxn, entrecosto, Hofgockel, fígado, Nierle — e hoje é também a abertura do <strong>encontro de MB-Trac, Unimog e tratores clássicos</strong>, que vai até domingo.",
     events:[
-      {h:10, tEn:"10:00", dEn:"Groceries, before everything shuts", subEn:"Tomorrow is Mariä Himmelfahrt — see the note below.", dPt:"Compras, antes de tudo fechar", subPt:"Amanhã é a Assunção de Nossa Senhora — ver a nota abaixo."},
-      {h:17.5, tEn:"17:30", dEn:"Arrive at the Hofgut", subEn:"Evening menu starts at 17:00. Still light enough to walk the farm and see the tractors before eating.", dPt:"Chegar ao Hofgut", subPt:"O menu de jantar começa às 17:00. Ainda há luz para percorrer a quinta e ver os tratores antes de comer."},
+      {h:8, tEn:"08:00", dEn:"Depart for Regensburg", subEn:"About 1h40 on the road. No flight to catch today — take the drive at its own pace.", dPt:"Partir para Regensburgo", subPt:"Cerca de 1h40 de estrada. Hoje não há voo nenhum a apanhar — façam a viagem ao vosso ritmo."},
+      {h:9.5, tEn:"09:30", dEn:"Regensburg old town", subEn:"Steinerne Brücke, Dom St. Peter, Porta Praetoria. All walkable from each other — no route needed, just wander.", dPt:"Centro histórico de Regensburgo", subPt:"Steinerne Brücke, Dom St. Peter, Porta Praetoria. Tudo a pé, uns dos outros — sem itinerário fixo, só passear."},
+      {h:12.5, tEn:"12:30", dEn:"Lunch in the old town", subEn:"No fixed spot — the streets around the Dom are full of options.", dPt:"Almoço no centro histórico", subPt:"Sem sítio marcado — as ruas à volta do Dom têm muitas opções."},
+      {h:14.5, tEn:"14:30", dEn:"Head back towards Tapfheim", subEn:"Roughly the same distance as home — about 1h45.", dPt:"Regressar em direção a Tapfheim", subPt:"Aproximadamente a mesma distância que até casa — cerca de 1h45."},
+      {h:16.25, tEn:"16:15", dEn:"Arrive at the Hofgut", subEn:"Kitchen opens at 17:00 — plenty of time to walk the farm and see the tractors first.", dPt:"Chegar ao Hofgut", subPt:"A cozinha abre às 17:00 — tempo de sobra para percorrer a quinta e ver os tratores primeiro."},
       {h:18.25, tEn:"18:15", dEn:"Dinner", subEn:"Haxn, spareribs, Hofgockel, liver, Nierle. Portions are farm-sized.", dPt:"Jantar", subPt:"Haxn, entrecosto, Hofgockel, fígado, Nierle. As doses são de quinta."},
       {h:20, tEn:"20:00", dEn:"Stay out in the garden", subEn:"The heat finally breaks after sundown. This is the payoff for the whole week.", dPt:"Ficar no jardim", subPt:"O calor só cede depois do pôr do sol. É esta a recompensa da semana inteira."},
       {h:21, tEn:"21:00", dEn:"They close", subEn:"Early by festival standards. Ten minutes home.", dPt:"Fecham", subPt:"Cedo, para os padrões de uma festa. Dez minutos até casa."}
     ],
     notesEn:[
-      "<b>Cash only.</b> No card payment of any kind, and no cashpoint on site. Bring more than you think.",
-      "<b>You cannot bring your own food or drink here</b> — the house rule is explicit. Different from Sunday's Biergarten.",
-      "<b>Saturday 15 August is Mariä Himmelfahrt</b>, a public holiday across most of Catholic Bavaria. Shops shut. Do the food shop this morning.",
-      "Still an option instead: Huisheim from 14:00 for 8 € each, which is the fullest of the four festival days and runs to a fire show at 23:00. It is 45 minutes of unlit road each way, against ten minutes to Tapfheim."
+      "<b>It's a full day, not a light one.</b> A city morning, two long drives and a festival evening, back to back — pace it gently, especially with tomorrow being a travel day for one of you.",
+      "<b>Cash only at the Hofgut.</b> No card payment of any kind, and no cashpoint on site.",
+      "<b>You cannot bring your own food or drink to the Hofgut</b> — the house rule is explicit. Different from Sunday's Biergarten.",
+      "<b>Tomorrow, 15 August, is Mariä Himmelfahrt</b>, a public holiday across most of Catholic Bavaria — shops shut. Do the food shop tonight or before you leave this morning; there's no slot left for it later in the day."
     ],
     notesPt:[
-      "<b>Só dinheiro.</b> Não aceitam qualquer tipo de cartão e não há multibanco no local. Levem mais do que pensam.",
-      "<b>Não é permitido levar comida ou bebida de fora</b> — a regra da casa é explícita. Ao contrário do Biergarten de domingo.",
-      "<b>Sábado, 15 de agosto, é a Assunção de Nossa Senhora</b>, feriado na maior parte da Baviera católica. As lojas fecham. Façam as compras esta manhã.",
-      "Continua a ser alternativa: Huisheim a partir das 14:00, por 8 € cada, que é o mais completo dos quatro dias da festa e termina com um espetáculo de fogo às 23:00. São 45 minutos de estrada sem iluminação em cada sentido, contra dez minutos até Tapfheim."
+      "<b>É um dia cheio, não um dia leve.</b> Uma manhã na cidade, duas viagens longas e uma noite de festa, seguidas — façam-no com calma, especialmente sendo amanhã um dia de viagem para um de vocês.",
+      "<b>Só dinheiro no Hofgut.</b> Não aceitam qualquer tipo de cartão e não há multibanco no local.",
+      "<b>Não é permitido levar comida ou bebida de fora para o Hofgut</b> — a regra da casa é explícita. Ao contrário do Biergarten de domingo.",
+      "<b>Amanhã, 15 de agosto, é a Assunção de Nossa Senhora</b>, feriado na maior parte da Baviera católica — as lojas fecham. Façam as compras esta noite ou antes de saírem de manhã; não sobra outro momento ao longo do dia."
+    ]
+  },
+  {
+    id:"sat15", temp:32,
+    dayEn:"Sat 15", dayPt:"Sáb 15",
+    abbrEn:"Sat", abbrPt:"Sáb",
+    titleEn:"One long lunch, then goodbye",
+    titlePt:"Um almoço demorado, depois a despedida",
+    tagEn:"Freising · flight 20:00, Schengen",
+    tagPt:"Freising · voo às 20:00, Schengen",
+    whyEn:"After yesterday, today is built to need almost nothing from anyone. The flight is inside Schengen, so the airport only asks for a two-hour buffer — and Weihenstephan is a place made for sitting still, not walking. The Bräustüberl sits on the hill above <strong>the world's oldest working brewery, founded in 1040</strong>, looking out over Freising; order, eat, stay as long as it's good. Freising itself is barely twenty minutes from the runway, so there's no long transfer waiting at the end of it — just one lunch, one short drive, one goodbye.",
+    whyPt:"Depois de ontem, hoje está pensado para não pedir quase nada a ninguém. O voo é dentro do espaço Schengen, por isso o aeroporto só pede uma margem de duas horas — e Weihenstephan é um sítio feito para ficar sentado, não para andar. O Bräustüberl fica na colina acima <strong>da cervejaria em funcionamento mais antiga do mundo, fundada em 1040</strong>, com vista sobre Freising; pedir, comer, ficar o tempo que for bom. Freising fica a menos de vinte minutos da pista, por isso não há nenhuma transferência longa à espera no final — só um almoço, uma viagem curta, uma despedida.",
+    events:[
+      {h:11, tEn:"11:00", dEn:"Leave Buttenwiesen, no alarm needed", subEn:"About 1h25 to Freising. Nothing today has an early clock on it.", dPt:"Sair de Buttenwiesen, sem despertador", subPt:"Cerca de 1h25 até Freising. Nada hoje tem um horário cedo."},
+      {h:12.5, tEn:"12:30", dEn:"Bräustüberl Weihenstephan", subEn:"Beer garden on the hill above Freising, kitchen open all day. Weißbier, Obatzda, and no reason to rush.", dPt:"Bräustüberl Weihenstephan", subPt:"Jardim-cervejaria na colina acima de Freising, cozinha aberta o dia todo. Weißbier, Obatzda, e nenhuma razão para ter pressa."},
+      {h:16.5, tEn:"16:30", dEn:"Head to the airport", subEn:"Direct to MUC, about 20 minutes.", dPt:"Seguir para o aeroporto", subPt:"Diretos até ao MUC, cerca de 20 minutos."},
+      {h:16.83, tEn:"16:50", dEn:"Park at P20", subEn:"A few minutes' walk to Terminal 2, no shuttle needed. Over an hour ahead of the two-hour mark.", dPt:"Estacionar no P20", subPt:"Poucos minutos a pé até ao Terminal 2, sem autocarro de ligação. Mais de uma hora antes da margem de duas horas."},
+      {h:20, tEn:"20:00", dEn:"Departure", subEn:"Schengen flight — the two-hour buffer, not the international one. The week, done.", dPt:"Partida", subPt:"Voo Schengen — a margem de duas horas, não a internacional. A semana, terminada."}
+    ],
+    notesEn:[
+      "<b>Today is also Mariä Himmelfahrt</b> — same holiday as yesterday's note. Nothing in this plan needs a shop open, so it doesn't change anything here.",
+      "<b>Moosburg is a detour today, not a waypoint.</b> It sits east of Freising, while the airport sits almost due south — going through it means driving away from MUC before turning back. If you still want the memory-lane walk: Freising → Moosburg is about 20 minutes, Moosburg → MUC another 20, plus whatever time you spend there. The day has enough slack to absorb it without touching the 18:00 target — it's optional on direction, not on time.",
+      "About 32 °C, dry. The Bräustüberl's garden has shade; the walk to P20 doesn't need any."
+    ],
+    notesPt:[
+      "<b>Hoje é também a Assunção de Nossa Senhora</b> — o mesmo feriado da nota de ontem. Nada neste plano depende de uma loja aberta, por isso não muda nada aqui.",
+      "<b>Hoje, Moosburg é um desvio, não uma paragem no caminho.</b> Fica a leste de Freising, enquanto o aeroporto fica quase mesmo a sul — passar por lá significa afastar-se do MUC antes de voltar para trás. Se ainda quiserem o passeio da recordação: Freising → Moosburg são cerca de 20 minutos, Moosburg → MUC mais 20, além do tempo que passarem lá. O dia tem folga suficiente para absorver isso sem tocar na meta das 18:00 — é opcional na direção, não no tempo.",
+      "Cerca de 32 °C, seco. O jardim do Bräustüberl tem sombra; o caminho até ao P20 não precisa dela."
     ]
   }
 ];
@@ -428,7 +459,9 @@ const heatColor = t => {
 const bi = (en, pt) => `<span class="l en">${en}</span><span class="l pt">${pt}</span>`;
 
 /* ---- heat strip ---- */
-document.getElementById("bars").innerHTML = DAYS.map(d => `
+const barsEl = document.getElementById("bars");
+barsEl.style.gridTemplateColumns = `repeat(${DAYS.length},1fr)`;
+barsEl.innerHTML = DAYS.map(d => `
   <button class="bar" data-go="${d.id}" aria-current="false">
     <span class="bar-temp">${d.temp}°</span>
     <span class="bar-fill" style="height:${28 + (d.temp - 28) * 11}px;background:${heatColor(d.temp)}"></span>
